@@ -2,10 +2,12 @@ from distutils.core import setup
 from setuptools import find_packages
 
 REQUIREMENTS = [
+    "pylzma"
 ]
 
 REQUIREMENTS_DEV = [
     "mypy==0.*",
+    "pylzma",
     "pytest==6.*",
     "twine",
     "wheel==0.*"
