@@ -2,12 +2,12 @@ from distutils.core import setup
 from setuptools import find_packages
 
 REQUIREMENTS = [
-    "pylzma"
+    "pylzma==0.*"
 ]
 
 REQUIREMENTS_DEV = [
     "mypy==0.*",
-    "pylzma",
+    "pylzma==0.*",
     "pytest==6.*",
     "twine",
     "wheel==0.*"
@@ -18,7 +18,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="napi-py",
-    version="1.1.1",
+    version="1.1.2",
     description="CLI tool for downloading subtitles from napiprojekt.pl",
     author="Mateusz Korzeniowski",
     author_email="emkor93@gmail.com",
