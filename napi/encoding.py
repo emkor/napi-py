@@ -1,8 +1,11 @@
 import locale
 from typing import Optional, Tuple
 
+import chardet
+
 DECODING_ORDER = ["utf-16", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "utf-8"]
 CHECK_NUM_CHARS = 5000
+AUTO_DETECT_THRESHOLD = 0.9
 
 
 def _is_ascii(c: str) -> bool:
@@ -24,7 +27,19 @@ def _is_correct_encoding(subs: str) -> bool:
     return err_symbols < diacritics
 
 
+def _detect_encoding(subs: bytes) -> Tuple[str, float]:
+    result = chardet.detect(subs)
+    return result["encoding"], result["confidence"]
+
+
 def _try_decode(subs: bytes) -> Tuple[str, str]:
+    encoding, confidence = _detect_encoding(subs)
+    if confidence > AUTO_DETECT_THRESHOLD:
+        try:
+            return encoding, subs.decode(encoding)
+        except UnicodeDecodeError:
+            pass
+
     last_exc = None
     for i, enc in enumerate(DECODING_ORDER):
         try:
