@@ -27,14 +27,14 @@ def _is_correct_encoding(subs: str) -> bool:
     return err_symbols < diacritics
 
 
-def _detect_encoding(subs: bytes) -> Tuple[str, float]:
+def _detect_encoding(subs: bytes) -> Tuple[Optional[str], float]:
     result = chardet.detect(subs)
     return result["encoding"], result["confidence"]
 
 
 def _try_decode(subs: bytes) -> Tuple[str, str]:
     encoding, confidence = _detect_encoding(subs)
-    if confidence > AUTO_DETECT_THRESHOLD:
+    if encoding and confidence > AUTO_DETECT_THRESHOLD:
         try:
             return encoding, subs.decode(encoding)
         except UnicodeDecodeError:

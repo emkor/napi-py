@@ -8,13 +8,12 @@ readme = "README.md"
 homepage = "https://github.com/emkor/napi-py"
 repository = "https://github.com/emkor/napi-py"
 keywords = ["napiprojekt", "subs", "subtitles", "movie", "film"]
-packages = [
-    { include = "napi" },
-]
+packages = [{ include = "napi" }]
 
 [tool.poetry.dependencies]
-python = "^3.6.2"
+python = "^3.7"
 pylzma = "^0.5.0"
+chardet = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.812"
