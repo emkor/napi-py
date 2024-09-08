@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "napi-py"
-version = "1.2.3"
+version = "1.2.4"
 description = "CLI tool for downloading subtitles from napiprojekt.pl"
 authors = ["emkor93 <emkor93@gmail.com>"]
 license = "GPL-3.0 License"
