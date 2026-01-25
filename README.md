@@ -2,7 +2,7 @@
 CLI tool for downloading subtitles from napiprojekt.pl, fork of [gabrys/napi.py](https://github.com/gabrys/napi.py)
 
 ## prerequisites
-- Python 3.7 or newer
+- Python 3.10 or newer
 
 ## installation
 - `pip install napi-py` for user-wide installation
